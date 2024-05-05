@@ -1,0 +1,91 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "drizzle-todo-list",
+  "title": "Drizzle Todo List",
+  "description": "Drizzle todo list app",
+  "icon": "command-icon.png",
+  "author": "plutotom",
+  "owner": "proctors",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "Add Drizzle Todo",
+      "description": "Adds a todo in a drizzle database",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.72.1",
+    "drizzle-orm": "^0.30.10",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.6",
+    "@types/node": "20.8.10",
+    "@types/pg": "^8.11.6",
+    "@types/react": "18.2.27",
+    "drizzle-kit": "^0.20.17",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  },
+  "preferences": [
+    {
+      "name": "DBHost",
+      "description": "Host name of pg host.",
+      "type": "textfield",
+      "required": true,
+      "title": "pg db host name"
+    },
+    {
+      "name": "POSTGRES_URL",
+      "description": "drizzle POSTGRES_URL",
+      "type": "textfield",
+      "required": true,
+      "title": "POSTGRES_URL"
+    },
+    {
+      "name": "POSTGRES_URL_NO_SSL",
+      "description": "POSTGRES_URL_NO_SSL",
+      "type": "textfield",
+      "required": true,
+      "title": "POSTGRES_URL_NO_SSL"
+    },
+    {
+      "name": "POSTGRES_USER",
+      "description": "POSTGRES_USER",
+      "type": "textfield",
+      "required": true,
+      "title": "POSTGRES_USER"
+    },
+    {
+      "name": "POSTGRES_HOST",
+      "description": "POSTGRES_HOST",
+      "type": "textfield",
+      "required": true,
+      "title": "POSTGRES_HOST"
+    },
+    {
+      "name": "POSTGRES_PASSWORD",
+      "description": "POSTGRES_PASSWORD",
+      "type": "password",
+      "required": true,
+      "title": "POSTGRES_PASSWORD"
+    },
+    {
+      "name": "POSTGRES_DATABASE",
+      "description": "POSTGRES_DATABASE",
+      "type": "textfield",
+      "required": true,
+      "title": "POSTGRES_DATABASE"
+    }
+  ]
+}
