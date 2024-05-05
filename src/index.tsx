@@ -1,6 +1,7 @@
 import { ActionPanel, List, Action } from "@raycast/api";
 import { useState, useEffect } from "react";
 const items = ["Augustiner Helles", "Camden Hells", "Leffe Blonde", "Sierra Nevada IPA"];
+import { InitWrapper } from "./components/init/init-wrapper";
 
 import { GetDBInstance } from "./lib/storage/db-instance.ts";
 // import { todos } from "../src/schema/dashboard-todo.ts";
@@ -35,32 +36,34 @@ export default function Command() {
     filterList(items.filter((item) => item.includes(searchText)));
   }, [searchText]);
   return (
-    <List
-      filtering={false}
-      onSearchTextChange={setSearchText}
-      navigationTitle="Search Beers"
-      searchBarPlaceholder="Search your favorite beer"
-    >
-      {filteredList.map((item) => (
+    <InitWrapper>
+      <List
+        filtering={false}
+        onSearchTextChange={setSearchText}
+        navigationTitle="Search Beers"
+        searchBarPlaceholder="Search your favorite beer"
+      >
+        {filteredList.map((item) => (
+          <List.Item
+            key={item}
+            title={item}
+            actions={
+              <ActionPanel>
+                <Action title="Select" onAction={() => console.log(`${item} selected`)} />
+              </ActionPanel>
+            }
+          />
+        ))}
         <List.Item
-          key={item}
-          title={item}
+          key={1}
+          title={"Create todo in db"}
           actions={
             <ActionPanel>
-              <Action title="Select" onAction={() => console.log(`${item} selected`)} />
+              <Action title="Select to create todo" onAction={() => handleCreateTodo()} />
             </ActionPanel>
           }
         />
-      ))}
-      <List.Item
-        key={1}
-        title={"Create todo in db"}
-        actions={
-          <ActionPanel>
-            <Action title="Select to create todo" onAction={() => handleCreateTodo()} />
-          </ActionPanel>
-        }
-      />
-    </List>
+      </List>
+    </InitWrapper>
   );
 }
