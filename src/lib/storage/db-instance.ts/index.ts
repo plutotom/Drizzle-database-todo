@@ -2,6 +2,7 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Client } from "pg";
 import { getPreferenceValues } from "@raycast/api";
+import { todos } from "../../../schema/dashboard-todo";
 
 export const GetDBInstance = async () => {
   const preferences = getPreferenceValues<Preferences>();
@@ -15,29 +16,7 @@ export const GetDBInstance = async () => {
   await client.connect();
   return drizzle(client, {
     schema: {
-      SnippetModel,
-      LibraryModel,
-      // LabelModel,
-      // SnippetModelRelations,
-      // LabelModelRelations,
-      // LibraryModelRelations,
-      // SnippetLabelModel,
-      // SnippetLabelModelRelations,
+      todos,
     },
   });
 };
-// ---------------------------------- example sqlite verions  ----------------------------------
-
-// export const SqliteBindingFolder = (function () {
-//   return resolve(environment.assetsPath, `v${process.versions.modules}`);
-// })();
-
-// export const SqliteBindingPath = (function () {
-//   return resolve(SqliteBindingFolder, `${SQLITE_BINDING_NAME}-${arch()}.node`);
-// })();
-
-// export const UserDefinedDBPath = (function () {
-//   const preferences = getPreferenceValues<Preferences>();
-//   const dbFileAbsPath = resolve(preferences.dbFolder, DB_NAME);
-//   return dbFileAbsPath;
-// })();

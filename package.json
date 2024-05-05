@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "@raycast/api": "^1.72.1",
+    "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.10",
     "pg": "^8.11.5"
   },
@@ -35,16 +36,11 @@
     "dev": "ray develop",
     "fix-lint": "ray lint --fix",
     "lint": "ray lint",
-    "publish": "npx @raycast/api@latest publish"
+    "publish": "npx @raycast/api@latest publish",
+    "migration-gen": "drizzle-kit generate:pg --config=drizzle.config.ts",
+    "migration-push": "drizzle-kit push:pg --config=drizzle.config.ts"
   },
   "preferences": [
-    {
-      "name": "DBHost",
-      "description": "Host name of pg host.",
-      "type": "textfield",
-      "required": true,
-      "title": "pg db host name"
-    },
     {
       "name": "POSTGRES_URL",
       "description": "drizzle POSTGRES_URL",
